@@ -1,5 +1,13 @@
 require 'forwardable'
-require 'active_support/all'
+
+
+begin
+  # newer versions of active_support (>= 3.0)
+  require 'active_support/core_ext/object/blank'
+rescue LoadError => e
+  # support older versions of active_support (<= 2.3.5)
+  require "active_support/all"
+end
 
 require 'validatable/object_extension'
 require 'validatable/errors'
